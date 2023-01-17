@@ -14,11 +14,9 @@ pipeline {
 
     stage('Build') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-          sh "docker login -u 20127090 -p Tu01225669718"
-          sh "docker build -t reactappv3 ."
-          sh "docker push reactappv3 "
-        }
+        sh "docker login -u 20127090 -p Tu01225669718"
+        sh "docker build -t reactappv3 ."
+        sh "docker push reactappv3 "
         // withDockerRegistry(credentialsId: 'docker', url: 'https://index.docker.io/v10/') {
         //   sh "docker build -t reactappv3 ."
         //   sh "docker push reactappv3 "
