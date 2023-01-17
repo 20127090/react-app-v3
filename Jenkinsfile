@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Clone') {
       steps {
-        git(url: 'https://github.com/20127090/react-app-v3.git', branch: 'master', poll: true, credentialsId: 'Git')
+        git credentialsId: 'Git', url: 'https://github.com/20127090/react-app-v3.git'
       }
     }
 
