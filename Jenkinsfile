@@ -14,13 +14,10 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'sh "docker build -t reactappv3 ."'
-      }
-    }
-
-    stage('Push') {
-      steps {
-        sh 'docker push reactappv3'
+        withDockerRegistry(credentialsId: 'docker', url: 'https://index.docker.io/v10/') {
+          sh "docker build -t reactappv3 ."
+          sh "docker push reactappv3 "
+        }
       }
     }
 
